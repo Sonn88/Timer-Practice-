@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container" >
+    <div class="content"id="colors">
+        <button id="3"> Disappear In 3</button>
+        <button id=" color">Color</button>
+        <button id="bestColor">Stop Color</button>
+    </div>
+</div>
+<script>
+     const Gone= document.getElementById('3')
+     const Color = document.getElementById(' color')
+     const background =document.getElementById('colors')
+     const StopC = document.getElementById('bestColor')
+    let number
+     let five
+     Gone.addEventListener('click', function(){
+        number= setInterval(function(){
+             console.log("This button will disappear in 3 seconds.")
+         }, 1000);
+        setTimeout(function(){
+       clearInterval(number)
+      Gone.remove()
+
+        }, 3000);
+
+     })
+     Color.addEventListener('click',function (){
+         background.style.backgroundColor= randomColor()
+
+   if(!number){
+       five=setInterval(function(){
+           console.log("Wait five seconds for color to change")
+
+       }, 1000);
+       number= setInterval(function (){
+
+           background.style.backgroundColor= randomColor()
+           console.log("Boom Color changed")
+
+
+       },5000)
+
+
+
+   }
+
+
+         Color.remove()
+
+
+     })
+     StopC.addEventListener('click',function (){
+      if(five){
+          clearInterval(five)
+          five=null
+      }
+      if(number){
+          clearInterval(number)
+          console.log("I like this color")
+          number=null
+
+      }
+
+
+     })
+
+     function randomColor(){
+         let color =[
+             `#3b624b`,
+             `#b48eca`,
+             `#a55a5a`,
+             `#495b81`,
+             `#774b63`,
+         ]
+         let i = Math.floor(Math.random()* color.length)
+         return color[i]
+     }
+
+</script>
+</body>
+</html>
